@@ -13,6 +13,10 @@
 		957B06DC27A9DA440026D1EF /* MetaWeatherFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = 957B06CE27A9DA430026D1EF /* MetaWeatherFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		957B06E727A9DCF40026D1EF /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06E627A9DCF40026D1EF /* URLProtocolStub.swift */; };
 		957B06EA27A9DD620026D1EF /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06E927A9DD620026D1EF /* URLSessionHTTPClientTests.swift */; };
+		957B06ED27ABD3470026D1EF /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06EC27ABD3470026D1EF /* TestHelpers.swift */; };
+		957B06F027ABD3BD0026D1EF /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06EF27ABD3BD0026D1EF /* HTTPClient.swift */; };
+		957B06F227ABD3F50026D1EF /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06F127ABD3F50026D1EF /* URLSessionHTTPClient.swift */; };
+		957B06F427ABD4390026D1EF /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06F327ABD4390026D1EF /* XCTestCase+MemoryLeakTracking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +37,10 @@
 		957B06DA27A9DA440026D1EF /* MetaWeatherFeedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaWeatherFeedTests.swift; sourceTree = "<group>"; };
 		957B06E627A9DCF40026D1EF /* URLProtocolStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
 		957B06E927A9DD620026D1EF /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
+		957B06EC27ABD3470026D1EF /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
+		957B06EF27ABD3BD0026D1EF /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		957B06F127ABD3F50026D1EF /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
+		957B06F327ABD4390026D1EF /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +83,7 @@
 		957B06CD27A9DA430026D1EF /* MetaWeatherFeed */ = {
 			isa = PBXGroup;
 			children = (
+				957B06EE27ABD3810026D1EF /* SharedAPI */,
 				957B06CE27A9DA430026D1EF /* MetaWeatherFeed.h */,
 				957B06CF27A9DA430026D1EF /* MetaWeatherFeed.docc */,
 			);
@@ -84,6 +93,7 @@
 		957B06D927A9DA440026D1EF /* MetaWeatherFeedTests */ = {
 			isa = PBXGroup;
 			children = (
+				957B06EB27ABD2FA0026D1EF /* Helpers */,
 				957B06E527A9DCD90026D1EF /* API Infra */,
 				957B06DA27A9DA440026D1EF /* MetaWeatherFeedTests.swift */,
 			);
@@ -105,6 +115,24 @@
 				957B06E627A9DCF40026D1EF /* URLProtocolStub.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		957B06EB27ABD2FA0026D1EF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				957B06EC27ABD3470026D1EF /* TestHelpers.swift */,
+				957B06F327ABD4390026D1EF /* XCTestCase+MemoryLeakTracking.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		957B06EE27ABD3810026D1EF /* SharedAPI */ = {
+			isa = PBXGroup;
+			children = (
+				957B06EF27ABD3BD0026D1EF /* HTTPClient.swift */,
+				957B06F127ABD3F50026D1EF /* URLSessionHTTPClient.swift */,
+			);
+			path = SharedAPI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,7 +244,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				957B06F027ABD3BD0026D1EF /* HTTPClient.swift in Sources */,
 				957B06D027A9DA430026D1EF /* MetaWeatherFeed.docc in Sources */,
+				957B06F227ABD3F50026D1EF /* URLSessionHTTPClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +257,8 @@
 				957B06DB27A9DA440026D1EF /* MetaWeatherFeedTests.swift in Sources */,
 				957B06EA27A9DD620026D1EF /* URLSessionHTTPClientTests.swift in Sources */,
 				957B06E727A9DCF40026D1EF /* URLProtocolStub.swift in Sources */,
+				957B06ED27ABD3470026D1EF /* TestHelpers.swift in Sources */,
+				957B06F427ABD4390026D1EF /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,6 +453,7 @@
 		957B06E327A9DA440026D1EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PSK6SBLT47;
@@ -436,6 +469,7 @@
 		957B06E427A9DA440026D1EF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PSK6SBLT47;

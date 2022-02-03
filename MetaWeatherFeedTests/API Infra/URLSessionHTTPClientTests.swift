@@ -6,20 +6,10 @@
 //
 
 import XCTest
+import MetaWeatherFeed
 
 class URLSessionHTTPClientTests: XCTestCase {
 
-    func anyNSError() -> NSError {
-        return NSError(domain: "any error", code: 0)
-    }
-
-    func anyURL() -> URL {
-        return URL(string: "http://any-url.com")!
-    }
-
-    func anyData() -> Data {
-        return Data("any data".utf8)
-    }
 
     override func tearDown() {
         super.tearDown()
@@ -150,61 +140,4 @@ class URLSessionHTTPClientTests: XCTestCase {
         return URLResponse(url: anyURL(), mimeType: nil, expectedContentLength: 0, textEncodingName: nil)
     }
     
-}
-
-public final class URLSessionHTTPClient: HTTPClient {
-    private let session: URLSession
-    
-    public init(session: URLSession) {
-        self.session = session
-    }
-    
-    private struct UnexpectedValuesRepresentation: Error {}
-    
-    private struct URLSessionTaskWrapper: HTTPClientTask {
-        let wrapped: URLSessionTask
-        
-        func cancel() {
-            wrapped.cancel()
-        }
-    }
-    
-    public func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) -> HTTPClientTask {
-        let task = session.dataTask(with: url) { data, response, error in
-            completion(Result {
-                if let error = error {
-                    throw error
-                } else if let data = data, let response = response as? HTTPURLResponse {
-                    return (data, response)
-                } else {
-                    throw UnexpectedValuesRepresentation()
-                }
-            })
-        }
-        task.resume()
-        return URLSessionTaskWrapper(wrapped: task)
-    }
-}
-
-
-public protocol HTTPClientTask {
-    func cancel()
-}
-
-public protocol HTTPClient {
-    typealias Result = Swift.Result<(Data, HTTPURLResponse), Error>
-    
-    /// The completion handler can be invoked in any thread.
-    /// Clients are responsible to dispatch to appropriate threads, if needed.
-    @discardableResult
-    func get(from url: URL, completion: @escaping (Result) -> Void) -> HTTPClientTask
-    
-}
-
-extension XCTestCase {
-    func trackForMemoryLeaks(_ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
-        addTeardownBlock { [weak instance] in
-            XCTAssertNil(instance, "Instance should have been deallocated. Potential memory leak.", file: file, line: line)
-        }
-    }
 }
