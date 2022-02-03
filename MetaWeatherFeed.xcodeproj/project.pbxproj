@@ -11,6 +11,8 @@
 		957B06D627A9DA440026D1EF /* MetaWeatherFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957B06CB27A9DA430026D1EF /* MetaWeatherFeed.framework */; };
 		957B06DB27A9DA440026D1EF /* MetaWeatherFeedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06DA27A9DA440026D1EF /* MetaWeatherFeedTests.swift */; };
 		957B06DC27A9DA440026D1EF /* MetaWeatherFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = 957B06CE27A9DA430026D1EF /* MetaWeatherFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		957B06E727A9DCF40026D1EF /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06E627A9DCF40026D1EF /* URLProtocolStub.swift */; };
+		957B06EA27A9DD620026D1EF /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06E927A9DD620026D1EF /* URLSessionHTTPClientTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		957B06CF27A9DA430026D1EF /* MetaWeatherFeed.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = MetaWeatherFeed.docc; sourceTree = "<group>"; };
 		957B06D527A9DA440026D1EF /* MetaWeatherFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MetaWeatherFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		957B06DA27A9DA440026D1EF /* MetaWeatherFeedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaWeatherFeedTests.swift; sourceTree = "<group>"; };
+		957B06E627A9DCF40026D1EF /* URLProtocolStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
+		957B06E927A9DD620026D1EF /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,9 +84,27 @@
 		957B06D927A9DA440026D1EF /* MetaWeatherFeedTests */ = {
 			isa = PBXGroup;
 			children = (
+				957B06E527A9DCD90026D1EF /* API Infra */,
 				957B06DA27A9DA440026D1EF /* MetaWeatherFeedTests.swift */,
 			);
 			path = MetaWeatherFeedTests;
+			sourceTree = "<group>";
+		};
+		957B06E527A9DCD90026D1EF /* API Infra */ = {
+			isa = PBXGroup;
+			children = (
+				957B06E827A9DCFA0026D1EF /* Helpers */,
+				957B06E927A9DD620026D1EF /* URLSessionHTTPClientTests.swift */,
+			);
+			path = "API Infra";
+			sourceTree = "<group>";
+		};
+		957B06E827A9DCFA0026D1EF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				957B06E627A9DCF40026D1EF /* URLProtocolStub.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +225,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				957B06DB27A9DA440026D1EF /* MetaWeatherFeedTests.swift in Sources */,
+				957B06EA27A9DD620026D1EF /* URLSessionHTTPClientTests.swift in Sources */,
+				957B06E727A9DCF40026D1EF /* URLProtocolStub.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
