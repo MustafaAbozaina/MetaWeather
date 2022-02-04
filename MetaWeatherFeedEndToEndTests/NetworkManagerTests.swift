@@ -34,7 +34,7 @@ class NetworkManagerTests: XCTestCase {
     
     func test_decodeJson_shouldDecodeDataSuccessfully(){
         guard let jsonData = try?  JSONSerialization.data(
-            withJSONObject: weatherJson,
+            withJSONObject: weatherJsonTestData,
             options: .prettyPrinted
         ) else {
                   XCTFail()
@@ -80,11 +80,8 @@ class NetworkManager {
             return responseModel
         } catch {
             return nil
-            
         }
-        
     }
-    
     
     enum NetworkHttpMethod: String {
         case get = "GET"
@@ -93,8 +90,8 @@ class NetworkManager {
 
 }
 
-
 // MARK: - ConsolidatedWeatherRoot
+
 struct ConsolidatedWeatherRoot: Codable {
     let consolidatedWeather: [ConsolidatedWeather]?
     
@@ -104,6 +101,7 @@ struct ConsolidatedWeatherRoot: Codable {
 }
 
 // MARK: - ConsolidatedWeather
+
 struct ConsolidatedWeather: Codable {
     let id: Int?
     let weatherStateName, weatherStateAbbr, windDirectionCompass, created: String?
@@ -131,7 +129,9 @@ struct ConsolidatedWeather: Codable {
     }
 }
 
-private var weatherJson: [String: Any] =
+// MARK: testing data
+
+private var weatherJsonTestData: [String: Any] =
 ["consolidated_weather": [
 [
     "id": 6306969095766016,
