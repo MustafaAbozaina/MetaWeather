@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		957B06D027A9DA430026D1EF /* MetaWeatherFeed.docc in Sources */ = {isa = PBXBuildFile; fileRef = 957B06CF27A9DA430026D1EF /* MetaWeatherFeed.docc */; };
 		957B06D627A9DA440026D1EF /* MetaWeatherFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957B06CB27A9DA430026D1EF /* MetaWeatherFeed.framework */; };
-		957B06DB27A9DA440026D1EF /* MetaWeatherFeedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06DA27A9DA440026D1EF /* MetaWeatherFeedTests.swift */; };
 		957B06DC27A9DA440026D1EF /* MetaWeatherFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = 957B06CE27A9DA430026D1EF /* MetaWeatherFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		957B06E727A9DCF40026D1EF /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06E627A9DCF40026D1EF /* URLProtocolStub.swift */; };
 		957B06EA27A9DD620026D1EF /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06E927A9DD620026D1EF /* URLSessionHTTPClientTests.swift */; };
@@ -17,10 +16,20 @@
 		957B06F027ABD3BD0026D1EF /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06EF27ABD3BD0026D1EF /* HTTPClient.swift */; };
 		957B06F227ABD3F50026D1EF /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06F127ABD3F50026D1EF /* URLSessionHTTPClient.swift */; };
 		957B06F427ABD4390026D1EF /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06F327ABD4390026D1EF /* XCTestCase+MemoryLeakTracking.swift */; };
+		957B06FC27ADAAD10026D1EF /* MetaWeatherFeedEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06FB27ADAAD10026D1EF /* MetaWeatherFeedEndToEndTests.swift */; };
+		957B06FD27ADAAD10026D1EF /* MetaWeatherFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957B06CB27A9DA430026D1EF /* MetaWeatherFeed.framework */; };
+		957B070327ADAAEA0026D1EF /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06DA27A9DA440026D1EF /* NetworkManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		957B06D727A9DA440026D1EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 957B06C227A9DA430026D1EF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 957B06CA27A9DA430026D1EF;
+			remoteInfo = MetaWeatherFeed;
+		};
+		957B06FE27ADAAD10026D1EF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 957B06C227A9DA430026D1EF /* Project object */;
 			proxyType = 1;
@@ -34,13 +43,15 @@
 		957B06CE27A9DA430026D1EF /* MetaWeatherFeed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetaWeatherFeed.h; sourceTree = "<group>"; };
 		957B06CF27A9DA430026D1EF /* MetaWeatherFeed.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = MetaWeatherFeed.docc; sourceTree = "<group>"; };
 		957B06D527A9DA440026D1EF /* MetaWeatherFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MetaWeatherFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		957B06DA27A9DA440026D1EF /* MetaWeatherFeedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaWeatherFeedTests.swift; sourceTree = "<group>"; };
+		957B06DA27A9DA440026D1EF /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		957B06E627A9DCF40026D1EF /* URLProtocolStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
 		957B06E927A9DD620026D1EF /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
 		957B06EC27ABD3470026D1EF /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		957B06EF27ABD3BD0026D1EF /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		957B06F127ABD3F50026D1EF /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 		957B06F327ABD4390026D1EF /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
+		957B06F927ADAAD10026D1EF /* MetaWeatherFeedEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MetaWeatherFeedEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		957B06FB27ADAAD10026D1EF /* MetaWeatherFeedEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaWeatherFeedEndToEndTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +70,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		957B06F627ADAAD10026D1EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				957B06FD27ADAAD10026D1EF /* MetaWeatherFeed.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -67,6 +86,7 @@
 			children = (
 				957B06CD27A9DA430026D1EF /* MetaWeatherFeed */,
 				957B06D927A9DA440026D1EF /* MetaWeatherFeedTests */,
+				957B06FA27ADAAD10026D1EF /* MetaWeatherFeedEndToEndTests */,
 				957B06CC27A9DA430026D1EF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -76,6 +96,7 @@
 			children = (
 				957B06CB27A9DA430026D1EF /* MetaWeatherFeed.framework */,
 				957B06D527A9DA440026D1EF /* MetaWeatherFeedTests.xctest */,
+				957B06F927ADAAD10026D1EF /* MetaWeatherFeedEndToEndTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,7 +116,6 @@
 			children = (
 				957B06EB27ABD2FA0026D1EF /* Helpers */,
 				957B06E527A9DCD90026D1EF /* API Infra */,
-				957B06DA27A9DA440026D1EF /* MetaWeatherFeedTests.swift */,
 			);
 			path = MetaWeatherFeedTests;
 			sourceTree = "<group>";
@@ -133,6 +153,15 @@
 				957B06F127ABD3F50026D1EF /* URLSessionHTTPClient.swift */,
 			);
 			path = SharedAPI;
+			sourceTree = "<group>";
+		};
+		957B06FA27ADAAD10026D1EF /* MetaWeatherFeedEndToEndTests */ = {
+			isa = PBXGroup;
+			children = (
+				957B06DA27A9DA440026D1EF /* NetworkManagerTests.swift */,
+				957B06FB27ADAAD10026D1EF /* MetaWeatherFeedEndToEndTests.swift */,
+			);
+			path = MetaWeatherFeedEndToEndTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,6 +214,24 @@
 			productReference = 957B06D527A9DA440026D1EF /* MetaWeatherFeedTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		957B06F827ADAAD10026D1EF /* MetaWeatherFeedEndToEndTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 957B070027ADAAD10026D1EF /* Build configuration list for PBXNativeTarget "MetaWeatherFeedEndToEndTests" */;
+			buildPhases = (
+				957B06F527ADAAD10026D1EF /* Sources */,
+				957B06F627ADAAD10026D1EF /* Frameworks */,
+				957B06F727ADAAD10026D1EF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				957B06FF27ADAAD10026D1EF /* PBXTargetDependency */,
+			);
+			name = MetaWeatherFeedEndToEndTests;
+			productName = MetaWeatherFeedEndToEndTests;
+			productReference = 957B06F927ADAAD10026D1EF /* MetaWeatherFeedEndToEndTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -199,6 +246,9 @@
 						CreatedOnToolsVersion = 13.2.1;
 					};
 					957B06D427A9DA440026D1EF = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					957B06F827ADAAD10026D1EF = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
 				};
@@ -218,6 +268,7 @@
 			targets = (
 				957B06CA27A9DA430026D1EF /* MetaWeatherFeed */,
 				957B06D427A9DA440026D1EF /* MetaWeatherFeedTests */,
+				957B06F827ADAAD10026D1EF /* MetaWeatherFeedEndToEndTests */,
 			);
 		};
 /* End PBXProject section */
@@ -231,6 +282,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		957B06D327A9DA440026D1EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		957B06F727ADAAD10026D1EF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -254,11 +312,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				957B06DB27A9DA440026D1EF /* MetaWeatherFeedTests.swift in Sources */,
 				957B06EA27A9DD620026D1EF /* URLSessionHTTPClientTests.swift in Sources */,
 				957B06E727A9DCF40026D1EF /* URLProtocolStub.swift in Sources */,
 				957B06ED27ABD3470026D1EF /* TestHelpers.swift in Sources */,
 				957B06F427ABD4390026D1EF /* XCTestCase+MemoryLeakTracking.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		957B06F527ADAAD10026D1EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				957B070327ADAAEA0026D1EF /* NetworkManagerTests.swift in Sources */,
+				957B06FC27ADAAD10026D1EF /* MetaWeatherFeedEndToEndTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +335,11 @@
 			isa = PBXTargetDependency;
 			target = 957B06CA27A9DA430026D1EF /* MetaWeatherFeed */;
 			targetProxy = 957B06D727A9DA440026D1EF /* PBXContainerItemProxy */;
+		};
+		957B06FF27ADAAD10026D1EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 957B06CA27A9DA430026D1EF /* MetaWeatherFeed */;
+			targetProxy = 957B06FE27ADAAD10026D1EF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -482,6 +553,36 @@
 			};
 			name = Release;
 		};
+		957B070127ADAAD10026D1EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PSK6SBLT47;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bozaina.MetaWeatherFeedEndToEndTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		957B070227ADAAD10026D1EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PSK6SBLT47;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bozaina.MetaWeatherFeedEndToEndTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -508,6 +609,15 @@
 			buildConfigurations = (
 				957B06E327A9DA440026D1EF /* Debug */,
 				957B06E427A9DA440026D1EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		957B070027ADAAD10026D1EF /* Build configuration list for PBXNativeTarget "MetaWeatherFeedEndToEndTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				957B070127ADAAD10026D1EF /* Debug */,
+				957B070227ADAAD10026D1EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
