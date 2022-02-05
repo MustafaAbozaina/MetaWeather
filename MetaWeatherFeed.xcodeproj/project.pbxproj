@@ -19,6 +19,8 @@
 		957B06FC27ADAAD10026D1EF /* MetaWeatherFeedEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06FB27ADAAD10026D1EF /* MetaWeatherFeedEndToEndTests.swift */; };
 		957B06FD27ADAAD10026D1EF /* MetaWeatherFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957B06CB27A9DA430026D1EF /* MetaWeatherFeed.framework */; };
 		957B070327ADAAEA0026D1EF /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06DA27A9DA440026D1EF /* NetworkManagerTests.swift */; };
+		957B070527AF0CF50026D1EF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B070427AF0CF50026D1EF /* NetworkManager.swift */; };
+		957B070827AF0D380026D1EF /* ConsolidatedWeatherRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B070727AF0D380026D1EF /* ConsolidatedWeatherRoot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		957B06F327ABD4390026D1EF /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		957B06F927ADAAD10026D1EF /* MetaWeatherFeedEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MetaWeatherFeedEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		957B06FB27ADAAD10026D1EF /* MetaWeatherFeedEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaWeatherFeedEndToEndTests.swift; sourceTree = "<group>"; };
+		957B070427AF0CF50026D1EF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		957B070727AF0D380026D1EF /* ConsolidatedWeatherRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsolidatedWeatherRoot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,7 @@
 		957B06CD27A9DA430026D1EF /* MetaWeatherFeed */ = {
 			isa = PBXGroup;
 			children = (
+				957B070627AF0D0F0026D1EF /* SharedDecodableModels */,
 				957B06EE27ABD3810026D1EF /* SharedAPI */,
 				957B06CE27A9DA430026D1EF /* MetaWeatherFeed.h */,
 				957B06CF27A9DA430026D1EF /* MetaWeatherFeed.docc */,
@@ -151,6 +156,7 @@
 			children = (
 				957B06EF27ABD3BD0026D1EF /* HTTPClient.swift */,
 				957B06F127ABD3F50026D1EF /* URLSessionHTTPClient.swift */,
+				957B070427AF0CF50026D1EF /* NetworkManager.swift */,
 			);
 			path = SharedAPI;
 			sourceTree = "<group>";
@@ -162,6 +168,14 @@
 				957B06FB27ADAAD10026D1EF /* MetaWeatherFeedEndToEndTests.swift */,
 			);
 			path = MetaWeatherFeedEndToEndTests;
+			sourceTree = "<group>";
+		};
+		957B070627AF0D0F0026D1EF /* SharedDecodableModels */ = {
+			isa = PBXGroup;
+			children = (
+				957B070727AF0D380026D1EF /* ConsolidatedWeatherRoot.swift */,
+			);
+			path = SharedDecodableModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,8 +316,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				957B070527AF0CF50026D1EF /* NetworkManager.swift in Sources */,
 				957B06F027ABD3BD0026D1EF /* HTTPClient.swift in Sources */,
 				957B06D027A9DA430026D1EF /* MetaWeatherFeed.docc in Sources */,
+				957B070827AF0D380026D1EF /* ConsolidatedWeatherRoot.swift in Sources */,
 				957B06F227ABD3F50026D1EF /* URLSessionHTTPClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
