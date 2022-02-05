@@ -21,6 +21,7 @@
 		957B070327ADAAEA0026D1EF /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06DA27A9DA440026D1EF /* NetworkManagerTests.swift */; };
 		957B070527AF0CF50026D1EF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B070427AF0CF50026D1EF /* NetworkManager.swift */; };
 		957B070827AF0D380026D1EF /* ConsolidatedWeatherRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B070727AF0D380026D1EF /* ConsolidatedWeatherRoot.swift */; };
+		957B070B27AF0E670026D1EF /* InitialArchDiagram.png in Resources */ = {isa = PBXBuildFile; fileRef = 957B070A27AF0E670026D1EF /* InitialArchDiagram.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		957B06FB27ADAAD10026D1EF /* MetaWeatherFeedEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaWeatherFeedEndToEndTests.swift; sourceTree = "<group>"; };
 		957B070427AF0CF50026D1EF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		957B070727AF0D380026D1EF /* ConsolidatedWeatherRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsolidatedWeatherRoot.swift; sourceTree = "<group>"; };
+		957B070A27AF0E670026D1EF /* InitialArchDiagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InitialArchDiagram.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 		957B06CD27A9DA430026D1EF /* MetaWeatherFeed */ = {
 			isa = PBXGroup;
 			children = (
+				957B070927AF0E4C0026D1EF /* Resources */,
 				957B070627AF0D0F0026D1EF /* SharedDecodableModels */,
 				957B06EE27ABD3810026D1EF /* SharedAPI */,
 				957B06CE27A9DA430026D1EF /* MetaWeatherFeed.h */,
@@ -176,6 +179,14 @@
 				957B070727AF0D380026D1EF /* ConsolidatedWeatherRoot.swift */,
 			);
 			path = SharedDecodableModels;
+			sourceTree = "<group>";
+		};
+		957B070927AF0E4C0026D1EF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				957B070A27AF0E670026D1EF /* InitialArchDiagram.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,6 +303,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				957B070B27AF0E670026D1EF /* InitialArchDiagram.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
