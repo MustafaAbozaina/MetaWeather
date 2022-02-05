@@ -10,23 +10,40 @@ import XCTest
 
 
 class NetworkManagerTests: XCTestCase {
-    
+    private var validUrl = "location/839722"
+    private var invalidUrl = "location/83"
     var sut: NetworkManager!
     override func setUp() {
         super.setUp()
         sut = NetworkManager(httpClient: URLSessionHTTPClient(session: URLSession.shared))
     }
     
+    override func tearDown() {
+        super.tearDown()
+    }
+    
     func test_getFromURL_shouldMapRetreivedValueToPassedCodableObject() {
         let exp = expectation(description: "Expect that weather object to be retrieved")
-        let weatherRealURL = "location/839722"
         
-        sut.get(url: weatherRealURL, httpMethod: .get, parameters: nil, success: { (retrivedCodable:ConsolidatedWeatherRoot) in
+        sut.get(url: validUrl, httpMethod: .get, parameters: nil, success: { (retrivedCodable:ConsolidatedWeatherRoot) in
             exp.fulfill()
             XCTAssertNotNil(retrivedCodable.consolidatedWeather?[0].id)
             XCTAssertNotNil(retrivedCodable.consolidatedWeather?[0].weatherStateAbbr)
         },failure: { error in
-            
+            XCTFail()
+        }
+    )
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func test_getFromUrl_shouldFailIfUrlIsWrong() {
+        let exp = expectation(description: "Expect to fail because of wrong url")
+        
+        sut.get(url: invalidUrl, httpMethod: .get, parameters: nil, success: { (retrivedCodable:ConsolidatedWeatherRoot) in
+            XCTFail()
+        },failure: { error in
+            exp.fulfill()
+            XCTAssertNotNil(error)
         }
     )
         waitForExpectations(timeout: 5, handler: nil)
@@ -48,26 +65,35 @@ class NetworkManagerTests: XCTestCase {
 }
 
 class NetworkManager {
-    let baseUrl = "https://www.metaweather.com/api/"
+    let baseUrl = "https://www.metaweather.com/api/" // any valid api to make sure that netowrk request remote data correctly
      var httpClient:HTTPClient!
     init(httpClient: HTTPClient) {
         self.httpClient = httpClient;
     }
     
-    func get<T: Decodable>(url: String, httpMethod: NetworkHttpMethod, parameters: [String: Any]?, success:@escaping (T)-> (), failure:@escaping (Error)->()) {
-        guard let requestURL = URL(string:  baseUrl+url ) else {return}
+    func get<T: Decodable>(url: String, httpMethod: NetworkHttpMethod, parameters: [String: Any]?, success:@escaping (T)-> (), failure:@escaping (NetworkError)->()) {
+        guard let requestURL = URL(string:  baseUrl+url ) else {
+            failure(RequesetDataError.urlInputError)
+            return
+        }
+        
         self.httpClient.get(from: requestURL) { (resultValue:HTTPClient.Result) in
             
             switch resultValue {
             case .failure(let error):
+                failure(RequestResponseError(error: error))
                 break
             case .success((let data, let response)):
+                if (((response as? HTTPURLResponse)?.statusCode ?? -1) >  299) {
+                    failure(RequestResponseError.noDataFound)
+                    return
+                }
                 debugPrint("response is \(response)")
                 let decodedValue: ConsolidatedWeatherRoot? = self.decode(responseData: data)
                 if let decodedValue = decodedValue as? T {
                     success(decodedValue)
                 }else {
-
+                    
                 }
                 break
             }
@@ -87,8 +113,49 @@ class NetworkManager {
         case get = "GET"
         case post = "POST"
     }
-
+    
+    enum RequesetDataError:  NetworkError {
+        func errorDescription() -> String {
+            switch self {
+            case .urlInputError:
+                return "URL is missing"
+            }
+        }
+        case urlInputError
+    }
+    
+    enum RequestResponseError: NetworkError {
+        func errorDescription() -> String {
+            switch self {
+            case .noDataFound:
+                return "No Data Found"
+            }
+        }
+        
+        init(error: Error) {
+            debugPrint(error)
+            self = .noDataFound
+        }
+        
+        init(statusCode: Int) {
+            switch statusCode {
+            case 404:
+                self = .noDataFound
+            break
+            default:
+                self = .noDataFound
+                break
+            }
+        }
+        
+        case noDataFound
+    }
 }
+
+protocol NetworkError: Error {
+    func errorDescription() -> String
+}
+
 
 // MARK: - ConsolidatedWeatherRoot
 
