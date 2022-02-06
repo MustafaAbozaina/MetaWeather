@@ -124,19 +124,20 @@
 		957B06D927A9DA440026D1EF /* MetaWeatherFeedTests */ = {
 			isa = PBXGroup;
 			children = (
+				957B070F27AFE63F0026D1EF /* WeatherAPIs */,
 				957B06EB27ABD2FA0026D1EF /* Helpers */,
-				957B06E527A9DCD90026D1EF /* API Infra */,
+				957B06E527A9DCD90026D1EF /* APIInfra */,
 			);
 			path = MetaWeatherFeedTests;
 			sourceTree = "<group>";
 		};
-		957B06E527A9DCD90026D1EF /* API Infra */ = {
+		957B06E527A9DCD90026D1EF /* APIInfra */ = {
 			isa = PBXGroup;
 			children = (
 				957B06E827A9DCFA0026D1EF /* Helpers */,
 				957B06E927A9DD620026D1EF /* URLSessionHTTPClientTests.swift */,
 			);
-			path = "API Infra";
+			path = APIInfra;
 			sourceTree = "<group>";
 		};
 		957B06E827A9DCFA0026D1EF /* Helpers */ = {
@@ -170,7 +171,6 @@
 			isa = PBXGroup;
 			children = (
 				957B06DA27A9DA440026D1EF /* NetworkManagerTests.swift */,
-				957B06FB27ADAAD10026D1EF /* RemoteWeatherLoaderTests.swift */,
 			);
 			path = MetaWeatherFeedEndToEndTests;
 			sourceTree = "<group>";
@@ -198,6 +198,14 @@
 				957B070C27AF13A50026D1EF /* ArchDiagram2.png */,
 			);
 			path = ArchDiagrams;
+			sourceTree = "<group>";
+		};
+		957B070F27AFE63F0026D1EF /* WeatherAPIs */ = {
+			isa = PBXGroup;
+			children = (
+				957B06FB27ADAAD10026D1EF /* RemoteWeatherLoaderTests.swift */,
+			);
+			path = WeatherAPIs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
