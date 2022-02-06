@@ -12,11 +12,11 @@
 		957B06DC27A9DA440026D1EF /* MetaWeatherFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = 957B06CE27A9DA430026D1EF /* MetaWeatherFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		957B06E727A9DCF40026D1EF /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06E627A9DCF40026D1EF /* URLProtocolStub.swift */; };
 		957B06EA27A9DD620026D1EF /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06E927A9DD620026D1EF /* URLSessionHTTPClientTests.swift */; };
-		957B06ED27ABD3470026D1EF /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06EC27ABD3470026D1EF /* TestHelpers.swift */; };
+		957B06ED27ABD3470026D1EF /* XCTest+MockRequestInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06EC27ABD3470026D1EF /* XCTest+MockRequestInfo.swift */; };
 		957B06F027ABD3BD0026D1EF /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06EF27ABD3BD0026D1EF /* HTTPClient.swift */; };
 		957B06F227ABD3F50026D1EF /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06F127ABD3F50026D1EF /* URLSessionHTTPClient.swift */; };
 		957B06F427ABD4390026D1EF /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06F327ABD4390026D1EF /* XCTestCase+MemoryLeakTracking.swift */; };
-		957B06FC27ADAAD10026D1EF /* MetaWeatherFeedEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06FB27ADAAD10026D1EF /* MetaWeatherFeedEndToEndTests.swift */; };
+		957B06FC27ADAAD10026D1EF /* RemoteWeatherLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06FB27ADAAD10026D1EF /* RemoteWeatherLoaderTests.swift */; };
 		957B06FD27ADAAD10026D1EF /* MetaWeatherFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957B06CB27A9DA430026D1EF /* MetaWeatherFeed.framework */; };
 		957B070327ADAAEA0026D1EF /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06DA27A9DA440026D1EF /* NetworkManagerTests.swift */; };
 		957B070527AF0CF50026D1EF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B070427AF0CF50026D1EF /* NetworkManager.swift */; };
@@ -50,12 +50,12 @@
 		957B06DA27A9DA440026D1EF /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		957B06E627A9DCF40026D1EF /* URLProtocolStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
 		957B06E927A9DD620026D1EF /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
-		957B06EC27ABD3470026D1EF /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
+		957B06EC27ABD3470026D1EF /* XCTest+MockRequestInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+MockRequestInfo.swift"; sourceTree = "<group>"; };
 		957B06EF27ABD3BD0026D1EF /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		957B06F127ABD3F50026D1EF /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 		957B06F327ABD4390026D1EF /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		957B06F927ADAAD10026D1EF /* MetaWeatherFeedEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MetaWeatherFeedEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		957B06FB27ADAAD10026D1EF /* MetaWeatherFeedEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaWeatherFeedEndToEndTests.swift; sourceTree = "<group>"; };
+		957B06FB27ADAAD10026D1EF /* RemoteWeatherLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteWeatherLoaderTests.swift; sourceTree = "<group>"; };
 		957B070427AF0CF50026D1EF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		957B070727AF0D380026D1EF /* ConsolidatedWeatherRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsolidatedWeatherRoot.swift; sourceTree = "<group>"; };
 		957B070A27AF0E670026D1EF /* InitialArchDiagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InitialArchDiagram.png; sourceTree = "<group>"; };
@@ -150,7 +150,7 @@
 		957B06EB27ABD2FA0026D1EF /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				957B06EC27ABD3470026D1EF /* TestHelpers.swift */,
+				957B06EC27ABD3470026D1EF /* XCTest+MockRequestInfo.swift */,
 				957B06F327ABD4390026D1EF /* XCTestCase+MemoryLeakTracking.swift */,
 			);
 			path = Helpers;
@@ -170,7 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				957B06DA27A9DA440026D1EF /* NetworkManagerTests.swift */,
-				957B06FB27ADAAD10026D1EF /* MetaWeatherFeedEndToEndTests.swift */,
+				957B06FB27ADAAD10026D1EF /* RemoteWeatherLoaderTests.swift */,
 			);
 			path = MetaWeatherFeedEndToEndTests;
 			sourceTree = "<group>";
@@ -354,7 +354,7 @@
 			files = (
 				957B06EA27A9DD620026D1EF /* URLSessionHTTPClientTests.swift in Sources */,
 				957B06E727A9DCF40026D1EF /* URLProtocolStub.swift in Sources */,
-				957B06ED27ABD3470026D1EF /* TestHelpers.swift in Sources */,
+				957B06ED27ABD3470026D1EF /* XCTest+MockRequestInfo.swift in Sources */,
 				957B06F427ABD4390026D1EF /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,7 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				957B070327ADAAEA0026D1EF /* NetworkManagerTests.swift in Sources */,
-				957B06FC27ADAAD10026D1EF /* MetaWeatherFeedEndToEndTests.swift in Sources */,
+				957B06FC27ADAAD10026D1EF /* RemoteWeatherLoaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
