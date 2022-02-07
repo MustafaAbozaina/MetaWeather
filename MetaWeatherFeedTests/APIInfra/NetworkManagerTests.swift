@@ -44,12 +44,27 @@ class NetworkManagerTests: XCTestCase {
     
     func test_getFromUrl_shouldSuccessInCaseSuccessStatusCodesWithCorrectJSONResponse() {
         let (sut, urlSession) = makeSUT()
-        let data = encodeJSON(value: jsonValue)
+        let data = encodeJSON(value: validJSONValue)
         successStatusCodes.forEach { number in
             let response = HTTPURLResponse(url: anyURL(), statusCode: number, httpVersion: nil, headerFields: nil)!
             urlSession.completions.append( (HTTPClient.Result {return (data, response)}))
         }
         expect(sut: sut, to: .success)
+    }
+    
+    func test_decodeJson_shouldDecodeDataSuccessfully(){
+        let (sut, _) = makeSUT()
+        guard let jsonData = try?  JSONSerialization.data(
+            withJSONObject: weatherJsonTestData,
+            options: .prettyPrinted
+        ) else {
+            XCTFail()
+            return
+        }
+        let weatherRoot: ConsolidatedWeatherRoot? = sut.decode(responseData: jsonData)
+        XCTAssertNotNil(weatherRoot?.consolidatedWeather)
+        XCTAssertEqual(weatherRoot?.consolidatedWeather?[0].id, 6306969095766016)
+        XCTAssertEqual(weatherRoot?.consolidatedWeather?[0].minTemp, -1.06)
     }
     
     func test_getFromUrl_shouldFailInCaseIfError() {
@@ -106,7 +121,7 @@ private class Task: HTTPClientTask {
     }
 }
 
-private var jsonValue: [String : Any] = ["id":1, "namse": "name"]
+private var validJSONValue: [String : Any] = ["id":1, "namse": "name"]
 
 private func encodeJSON(value: [String:Any]) ->Data {
     
@@ -119,3 +134,25 @@ private func encodeJSON(value: [String:Any]) ->Data {
     return jsonData
 }
 
+
+// MARK: testing data
+
+private var weatherJsonTestData: [String: Any] =
+["consolidated_weather": [
+    [
+        "id": 6306969095766016,
+        "weather_state_name": "Heavy Cloud",
+        "weather_state_abbr": "hc",
+        "wind_direction_compass": "W",
+        "created": "2022-01-31T14:00:55.247050Z",
+        "applicable_date": "2022-01-31",
+        "min_temp": -1.06,
+        "max_temp": 4.7,
+        "the_temp": 2.685,
+        "wind_speed": 6.69000353256449,
+        "wind_direction": 272.3332279826744,
+        "air_pressure": 1014.5,
+        "humidity": 60,
+        "visibility": 14.435384852461624,
+        "predictability": 71
+    ]]]
