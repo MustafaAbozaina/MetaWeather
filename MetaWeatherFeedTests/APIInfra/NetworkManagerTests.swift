@@ -26,17 +26,34 @@ class NetworkManagerTests: XCTestCase {
             let response = HTTPURLResponse(url: anyURL(), statusCode: number, httpVersion: nil, headerFields: nil)!
             urlSession.completions.append( (HTTPClient.Result {return (data, response)}))
         }
-        sut.get(url: anyStringUrl, httpMethod: .get, parameters: nil) { (a:DecodableTest) in
-            XCTFail()
-        } failure: { error in
-           XCTAssertNotNil(error)
+        expectTo(sut: sut, successExpected: true)
+
+    }
+    
+    func test_getFromUrl_shouldFailInCaseStatusCodeIsLessThan300AndJSONResponseIsWrong() {
+        let (sut, urlSession) = makeSUT()
+        let data = Data()
+        let failedStatusCodes = [200, 201, 202, 210, 220, 240, 250, 299]
+        failedStatusCodes.forEach { number in
+            let response = HTTPURLResponse(url: anyURL(), statusCode: number, httpVersion: nil, headerFields: nil)!
+            urlSession.completions.append( (HTTPClient.Result {return (data, response)}))
         }
     }
+    
+    //MARK: Helpers
     
     func makeSUT() -> (NetworkManager, URLSessionSpy) {
         let urlSession = URLSessionSpy()
         let networkManager = NetworkManager(httpClient: urlSession)
         return (networkManager, urlSession)
+    }
+    
+    func expectTo(sut:NetworkManager, successExpected: Bool) {
+        sut.get(url: anyStringUrl, httpMethod: .get, parameters: nil) { (a:DecodableTest) in
+            XCTAssert(successExpected)
+        } failure: { error in
+            XCTAssert(!successExpected)
+        }
     }
     
 }
