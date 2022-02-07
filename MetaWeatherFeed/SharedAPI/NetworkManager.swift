@@ -15,8 +15,16 @@ class NetworkManager {
         self.httpClient = httpClient;
     }
     
+    init() {
+        defaultInitialization()
+    }
+    
+    private func defaultInitialization(){
+        self.httpClient = URLSessionHTTPClient(session: URLSession.shared)
+    }
+    
     func get<T: Decodable>(url: String, httpMethod: NetworkHttpMethod, parameters: [String: Any]?, success:@escaping (T)-> (), failure:@escaping (NetworkError)->()) {
-        guard let requestURL = URL(string:  baseUrl+url ) else {
+        guard let requestURL = URL(string:  baseUrl+url ), !(url.isEmpty) else {
             failure(RequesetDataError.urlInputError)
             return
         }
@@ -33,11 +41,11 @@ class NetworkManager {
                     return
                 }
                 debugPrint("response is \(response)")
-                let decodedValue: ConsolidatedWeatherRoot? = self.decode(responseData: data)
+                let decodedValue: T? = self.decode(responseData: data)
                 if let decodedValue = decodedValue as? T {
                     success(decodedValue)
                 }else {
-                    
+                    failure(RequestResponseError.responseMapFailure)
                 }
                 break
             }
@@ -73,6 +81,8 @@ class NetworkManager {
             switch self {
             case .noDataFound:
                 return "No Data Found"
+            case .responseMapFailure:
+                return "Json Response Mapping Failed"
             }
         }
         
@@ -93,6 +103,7 @@ class NetworkManager {
         }
         
         case noDataFound
+        case responseMapFailure
     }
 }
 

@@ -16,13 +16,14 @@
 		957B06F027ABD3BD0026D1EF /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06EF27ABD3BD0026D1EF /* HTTPClient.swift */; };
 		957B06F227ABD3F50026D1EF /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06F127ABD3F50026D1EF /* URLSessionHTTPClient.swift */; };
 		957B06F427ABD4390026D1EF /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06F327ABD4390026D1EF /* XCTestCase+MemoryLeakTracking.swift */; };
-		957B06FC27ADAAD10026D1EF /* RemoteWeatherLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06FB27ADAAD10026D1EF /* RemoteWeatherLoaderTests.swift */; };
 		957B06FD27ADAAD10026D1EF /* MetaWeatherFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957B06CB27A9DA430026D1EF /* MetaWeatherFeed.framework */; };
-		957B070327ADAAEA0026D1EF /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06DA27A9DA440026D1EF /* NetworkManagerTests.swift */; };
+		957B070327ADAAEA0026D1EF /* NetworkManagerEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06DA27A9DA440026D1EF /* NetworkManagerEndToEndTests.swift */; };
 		957B070527AF0CF50026D1EF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B070427AF0CF50026D1EF /* NetworkManager.swift */; };
 		957B070827AF0D380026D1EF /* ConsolidatedWeatherRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B070727AF0D380026D1EF /* ConsolidatedWeatherRoot.swift */; };
 		957B070B27AF0E670026D1EF /* InitialArchDiagram.png in Resources */ = {isa = PBXBuildFile; fileRef = 957B070A27AF0E670026D1EF /* InitialArchDiagram.png */; };
 		957B070D27AF13A50026D1EF /* ArchDiagram2.png in Resources */ = {isa = PBXBuildFile; fileRef = 957B070C27AF13A50026D1EF /* ArchDiagram2.png */; };
+		957B071027B019E60026D1EF /* RemoteWeatherLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06FB27ADAAD10026D1EF /* RemoteWeatherLoaderTests.swift */; };
+		957B071227B1745E0026D1EF /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B071127B1745E0026D1EF /* NetworkManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +48,7 @@
 		957B06CE27A9DA430026D1EF /* MetaWeatherFeed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetaWeatherFeed.h; sourceTree = "<group>"; };
 		957B06CF27A9DA430026D1EF /* MetaWeatherFeed.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = MetaWeatherFeed.docc; sourceTree = "<group>"; };
 		957B06D527A9DA440026D1EF /* MetaWeatherFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MetaWeatherFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		957B06DA27A9DA440026D1EF /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
+		957B06DA27A9DA440026D1EF /* NetworkManagerEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerEndToEndTests.swift; sourceTree = "<group>"; };
 		957B06E627A9DCF40026D1EF /* URLProtocolStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
 		957B06E927A9DD620026D1EF /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
 		957B06EC27ABD3470026D1EF /* XCTest+MockRequestInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+MockRequestInfo.swift"; sourceTree = "<group>"; };
@@ -60,6 +61,7 @@
 		957B070727AF0D380026D1EF /* ConsolidatedWeatherRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsolidatedWeatherRoot.swift; sourceTree = "<group>"; };
 		957B070A27AF0E670026D1EF /* InitialArchDiagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InitialArchDiagram.png; sourceTree = "<group>"; };
 		957B070C27AF13A50026D1EF /* ArchDiagram2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ArchDiagram2.png; sourceTree = "<group>"; };
+		957B071127B1745E0026D1EF /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			children = (
 				957B06E827A9DCFA0026D1EF /* Helpers */,
 				957B06E927A9DD620026D1EF /* URLSessionHTTPClientTests.swift */,
+				957B071127B1745E0026D1EF /* NetworkManagerTests.swift */,
 			);
 			path = APIInfra;
 			sourceTree = "<group>";
@@ -170,7 +173,7 @@
 		957B06FA27ADAAD10026D1EF /* MetaWeatherFeedEndToEndTests */ = {
 			isa = PBXGroup;
 			children = (
-				957B06DA27A9DA440026D1EF /* NetworkManagerTests.swift */,
+				957B06DA27A9DA440026D1EF /* NetworkManagerEndToEndTests.swift */,
 			);
 			path = MetaWeatherFeedEndToEndTests;
 			sourceTree = "<group>";
@@ -360,8 +363,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				957B071227B1745E0026D1EF /* NetworkManagerTests.swift in Sources */,
 				957B06EA27A9DD620026D1EF /* URLSessionHTTPClientTests.swift in Sources */,
 				957B06E727A9DCF40026D1EF /* URLProtocolStub.swift in Sources */,
+				957B071027B019E60026D1EF /* RemoteWeatherLoaderTests.swift in Sources */,
 				957B06ED27ABD3470026D1EF /* XCTest+MockRequestInfo.swift in Sources */,
 				957B06F427ABD4390026D1EF /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
@@ -371,8 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				957B070327ADAAEA0026D1EF /* NetworkManagerTests.swift in Sources */,
-				957B06FC27ADAAD10026D1EF /* RemoteWeatherLoaderTests.swift in Sources */,
+				957B070327ADAAEA0026D1EF /* NetworkManagerEndToEndTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

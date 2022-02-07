@@ -9,7 +9,7 @@ import XCTest
 @testable import MetaWeatherFeed
 
 
-class NetworkManagerTests: XCTestCase {
+class NetworkManagerEndToEndTests: XCTestCase {
     private var validUrl = "location/839722"
     private var invalidUrl = "location/83"
     var sut: NetworkManager!
