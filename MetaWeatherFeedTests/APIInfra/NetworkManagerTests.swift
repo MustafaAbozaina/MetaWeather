@@ -10,6 +10,8 @@ import XCTest
 
 class NetworkManagerTests: XCTestCase {
     var anyStringUrl = "www.any-url.com"
+    let successStatusCodes = [200, 201, 202, 210, 220, 240, 250, 299]
+
     override func setUp() {
         super.setUp()
     }
@@ -30,15 +32,24 @@ class NetworkManagerTests: XCTestCase {
 
     }
     
-    func test_getFromUrl_shouldFailInCaseStatusCodeIsLessThan300AndJSONResponseIsWrong() {
+    func test_getFromUrl_shouldFailInCaseStatusSuccessStatusCodesAndJSONResponseIsWrong() {
         let (sut, urlSession) = makeSUT()
         let data = Data()
-        let failedStatusCodes = [200, 201, 202, 210, 220, 240, 250, 299]
-        failedStatusCodes.forEach { number in
+        successStatusCodes.forEach { number in
             let response = HTTPURLResponse(url: anyURL(), statusCode: number, httpVersion: nil, headerFields: nil)!
             urlSession.completions.append( (HTTPClient.Result {return (data, response)}))
         }
         expect(sut: sut, to: .fail)
+    }
+    
+    func test_getFromUrl_shouldSuccessInCaseSuccessStatusCodesWithCorrectJSONResponse() {
+        let (sut, urlSession) = makeSUT()
+        let data = encodeJSON(value: jsonValue)
+        successStatusCodes.forEach { number in
+            let response = HTTPURLResponse(url: anyURL(), statusCode: number, httpVersion: nil, headerFields: nil)!
+            urlSession.completions.append( (HTTPClient.Result {return (data, response)}))
+        }
+        expect(sut: sut, to: .success)
     }
     
     //MARK: Helpers
@@ -65,7 +76,8 @@ class NetworkManagerTests: XCTestCase {
 }
 
 private class DecodableTest: Decodable {
-    
+    var id: Int?
+    var name: String?
 }
 
 class URLSessionSpy: HTTPClient {
@@ -82,6 +94,18 @@ private class Task: HTTPClientTask {
     func cancel() {
         
     }
+}
+
+private var jsonValue: [String : Any] = ["id":1, "namse": "name"]
+
+private func encodeJSON(value: [String:Any]) ->Data {
     
+    guard let jsonData = try?  JSONSerialization.data(
+        withJSONObject: value,
+        options: .prettyPrinted
+    ) else {
+        return Data()
+    }
+    return jsonData
 }
 
