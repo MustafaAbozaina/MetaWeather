@@ -52,6 +52,12 @@ class NetworkManagerTests: XCTestCase {
         expect(sut: sut, to: .success)
     }
     
+    func test_getFromUrl_shouldFailInCaseIfError() {
+        let (sut, urlSession) = makeSUT()
+        urlSession.completions.append(HTTPClient.Result {throw MockedError()})
+        expect(sut: sut, to: .fail)
+    }
+    
     //MARK: Helpers
     
     func makeSUT() -> (NetworkManager, URLSessionSpy) {
@@ -61,7 +67,7 @@ class NetworkManagerTests: XCTestCase {
     }
     
     func expect(sut:NetworkManager, to expectation: TestExpectation) {
-        sut.get(url: anyStringUrl, httpMethod: .get, parameters: nil) { (a:DecodableTest) in
+        sut.get(url: anyStringUrl, httpMethod: .get, parameters: nil) { (decodable:DecodableTest) in
             XCTAssert(expectation == .success)
         } failure: { error in
             XCTAssert(expectation == .fail)
@@ -78,6 +84,10 @@ class NetworkManagerTests: XCTestCase {
 private class DecodableTest: Decodable {
     var id: Int?
     var name: String?
+}
+
+private class MockedError: Error {
+    
 }
 
 class URLSessionSpy: HTTPClient {
