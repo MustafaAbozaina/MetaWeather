@@ -38,6 +38,7 @@ class NetworkManagerTests: XCTestCase {
             let response = HTTPURLResponse(url: anyURL(), statusCode: number, httpVersion: nil, headerFields: nil)!
             urlSession.completions.append( (HTTPClient.Result {return (data, response)}))
         }
+        expect(sut: sut, to: .fail)
     }
     
     //MARK: Helpers
