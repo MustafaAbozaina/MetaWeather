@@ -26,7 +26,7 @@ class NetworkManagerTests: XCTestCase {
             let response = HTTPURLResponse(url: anyURL(), statusCode: number, httpVersion: nil, headerFields: nil)!
             urlSession.completions.append( (HTTPClient.Result {return (data, response)}))
         }
-        expectTo(sut: sut, successExpected: true)
+        expect(sut: sut, to: .fail)
 
     }
     
@@ -48,12 +48,17 @@ class NetworkManagerTests: XCTestCase {
         return (networkManager, urlSession)
     }
     
-    func expectTo(sut:NetworkManager, successExpected: Bool) {
+    func expect(sut:NetworkManager, to expectation: TestExpectation) {
         sut.get(url: anyStringUrl, httpMethod: .get, parameters: nil) { (a:DecodableTest) in
-            XCTAssert(successExpected)
+            XCTAssert(expectation == .success)
         } failure: { error in
-            XCTAssert(!successExpected)
+            XCTAssert(expectation == .fail)
         }
+    }
+    
+    enum TestExpectation {
+        case success
+        case fail
     }
     
 }
