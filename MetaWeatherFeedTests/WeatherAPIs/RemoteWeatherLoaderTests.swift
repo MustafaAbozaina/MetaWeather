@@ -101,7 +101,7 @@ class RemoteWeatherLoaderTests: XCTestCase {
 }
 
 protocol WeatherLoader {
-    func getWeatherInfo(locationId: Int, success:@escaping (ConsolidatedWeatherRoot)->(), failure: @escaping (NetworkError)->())
+    func getWeatherInfo(locationId: Int, success:@escaping (ConsolidatedWeatherRoot)->(), failure: @escaping (Error)->())
 }
 
 class RemoteWeatherLoader: WeatherLoader {
@@ -110,7 +110,7 @@ class RemoteWeatherLoader: WeatherLoader {
         self.networkManager = networkManager
     }
     
-    func getWeatherInfo(locationId: Int, success:@escaping (ConsolidatedWeatherRoot)->(), failure:@escaping (NetworkError)->()) {
+    func getWeatherInfo(locationId: Int, success:@escaping (ConsolidatedWeatherRoot)->(), failure:@escaping (Error)->()) {
         let url = "location/\(locationId)"
         self.networkManager.get(url: url, httpMethod: .get, parameters: nil, success: { (weatherRoot: ConsolidatedWeatherRoot) in
             success(weatherRoot)
@@ -139,6 +139,5 @@ private class NetworkManagerSpy<T>: NetworkManager {
     
     override func defaultInitialization() {
         self.httpClient = URLSessionHTTPClient(session: URLSession.shared)
-
     }
 }
