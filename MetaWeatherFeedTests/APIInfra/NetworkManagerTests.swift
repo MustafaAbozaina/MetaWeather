@@ -11,7 +11,7 @@ import XCTest
 class NetworkManagerTests: XCTestCase {
     var anyStringUrl = "www.any-url.com"
     let successStatusCodes = [200, 201, 202, 210, 220, 240, 250, 299]
-
+    
     override func setUp() {
         super.setUp()
     }
@@ -157,3 +157,4 @@ private var weatherJsonTestData: [String: Any] =
         "visibility": 14.435384852461624,
         "predictability": 71
     ]]]
+

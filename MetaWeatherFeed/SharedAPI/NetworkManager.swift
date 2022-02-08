@@ -19,8 +19,7 @@ class NetworkManager {
         defaultInitialization()
     }
     
-    private func defaultInitialization(){
-        self.httpClient = URLSessionHTTPClient(session: URLSession.shared)
+    func defaultInitialization(){
     }
     
     func get<T: Decodable>(url: String, httpMethod: NetworkHttpMethod, parameters: [String: Any]?, success:@escaping (T)-> (), failure:@escaping (NetworkError)->()) {

@@ -136,6 +136,9 @@ private class NetworkManagerSpy<T>: NetworkManager {
             failure(failuresCompletions[i])
         }
     }
+    
+    override func defaultInitialization() {
+        self.httpClient = URLSessionHTTPClient(session: URLSession.shared)
+
+    }
 }
-
-
