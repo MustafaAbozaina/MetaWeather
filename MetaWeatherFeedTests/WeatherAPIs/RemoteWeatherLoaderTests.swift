@@ -8,11 +8,10 @@
 import XCTest
 @testable import MetaWeatherFeed
 
-let validLocationId = 839722
 
 class RemoteWeatherLoaderTests: XCTestCase {
-    var validUrl = ""
-    
+    let locationId = 839722
+    let baseURL = "https://www.metaweather.com/api/"
     var sut: RemoteWeatherLoader!
    
     override func setUp() {
@@ -21,38 +20,88 @@ class RemoteWeatherLoaderTests: XCTestCase {
     }
     
     func test_loadWeatherOnce_shouldCalledGetFromURLOnce() {
-        let networkManager = NetworkManagerSpy()
-        sut = RemoteWeatherLoader(networkManager: networkManager)
+        let (sut, networkManager) = makeSUT()
 
-        sut.getWeatherInfo(locationId: validLocationId)
+        sut.getWeatherInfo(locationId: locationId, success:{ (weatherRoot:ConsolidatedWeatherRoot) in
+            
+        },failure: { _ in
+        
+        })
         
         XCTAssertEqual(networkManager.getMethodCallingNumbers, 1)
     }
     
     func test_loadWeatherTwice_shouldCalledGetFromURLTwice() {
-        let networkManager = NetworkManagerSpy()
-        sut = RemoteWeatherLoader(networkManager: networkManager)
+        let (sut, networkManager) = makeSUT()
 
-        sut.getWeatherInfo(locationId: validLocationId)
-        sut.getWeatherInfo(locationId: validLocationId)
+        sut.getWeatherInfo(locationId: locationId, success:{ (weatherRoot:ConsolidatedWeatherRoot) in
+            
+        },failure: { _ in
+        
+        })
+        sut.getWeatherInfo(locationId: locationId, success:{ (weatherRoot:ConsolidatedWeatherRoot) in
+            
+        },failure: { _ in
+        
+        })
         
         XCTAssertEqual(networkManager.getMethodCallingNumbers, 2)
     }
   
     func test_loadWeatherUsingURL_shouldUseThatURL() {
-        let networkManager = NetworkManagerSpy()
-        sut = RemoteWeatherLoader(networkManager: networkManager)
+        let (sut, networkManager) = makeSUT()
 
-        sut.getWeatherInfo(locationId: validLocationId)
+        sut.getWeatherInfo(locationId: locationId, success:{ (weatherRoot:ConsolidatedWeatherRoot) in
+            
+        },failure: { _ in
         
-        XCTAssertEqual(networkManager.sentURL, "location/\(validLocationId)")
+        })
+        XCTAssertEqual(networkManager.sentURL, "location/\(locationId)")
+        XCTAssertEqual(networkManager.baseUrl+networkManager.sentURL, baseURL+"location/\(locationId)")
+    }
+    
+    func test_loadWeatherWithValidLocation_shouldFireSuccess() {
+        let (sut, _) = makeSUT()
+
+        sut.getWeatherInfo(locationId: locationId, success:{ (weatherRoot:ConsolidatedWeatherRoot) in
+            XCTAssertNotNil(weatherRoot)
+        },failure: { _ in
+            XCTFail()
+        })
+    }
+    
+    func test_getWeatherFailed_shouldFireFailureClosure() {
+        let (sut, networkManager) = makeSUT()
+        networkManager.failuresCompletions.append(NetworkManagerSpy<Any>.ResponseError.noDataFound)
+        sut.getWeatherInfo(locationId: locationId, success:{ (weatherRoot:ConsolidatedWeatherRoot) in
+            XCTFail()
+        },failure: { error in
+            XCTAssertNotNil(error)
+        })
+    }
+    
+    func test_getWeatherSuccess_shouldFireSucccessClosure() {
+        let (sut, networkManager) = makeSUT()
+        networkManager.successCompletions.append(ConsolidatedWeatherRoot(consolidatedWeather: nil))
+        sut.getWeatherInfo(locationId: locationId, success:{ (weatherRoot:ConsolidatedWeatherRoot) in
+            XCTAssertNotNil(weatherRoot)
+        },failure: { error in
+            XCTFail()
+        })
+    }
+    
+    // MARK: Helpers
+    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (RemoteWeatherLoader, NetworkManagerSpy<ConsolidatedWeatherRoot>) {
+        let networkManager = NetworkManagerSpy<ConsolidatedWeatherRoot>()
+        let sut = RemoteWeatherLoader(networkManager: networkManager)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        return (sut, networkManager)
     }
     
 }
 
 protocol WeatherLoader {
-    func getWeatherInfo(locationId: Int)
-
+    func getWeatherInfo(locationId: Int, success:@escaping (ConsolidatedWeatherRoot)->(), failure: @escaping (NetworkError)->())
 }
 
 class RemoteWeatherLoader: WeatherLoader {
@@ -61,24 +110,32 @@ class RemoteWeatherLoader: WeatherLoader {
         self.networkManager = networkManager
     }
     
-    func getWeatherInfo(locationId: Int) {
+    func getWeatherInfo(locationId: Int, success:@escaping (ConsolidatedWeatherRoot)->(), failure:@escaping (NetworkError)->()) {
         let url = "location/\(locationId)"
-        self.networkManager.get(url: url, httpMethod: .get, parameters: nil) { (weatherRoot: ConsolidatedWeatherRoot) in
-            
-        } failure: { networkError in
-            
-        }
-
+        self.networkManager.get(url: url, httpMethod: .get, parameters: nil, success: { (weatherRoot: ConsolidatedWeatherRoot) in
+            success(weatherRoot)
+        }, failure: { networkError in
+            failure(networkError)
+        })
     }
 }
 
-class NetworkManagerSpy: NetworkManager {
+private class NetworkManagerSpy<T>: NetworkManager {
     var getMethodCallingNumbers = 0
     var sentURL = ""
-    override func get<T>(url: String, httpMethod: NetworkManager.NetworkHttpMethod, parameters: [String : Any]?, success: @escaping (T) -> (), failure: @escaping (NetworkError) -> ()) where T : Decodable {
+    var successCompletions = [T]()
+    var failuresCompletions = [NetworkError]()
+
+    override func get<T>(url: String, httpMethod: NetworkManager.NetworkHttpMethod, parameters: [String : Any]?, success: @escaping (T) -> Void, failure: @escaping (NetworkError) -> ()) where T : Decodable {
         getMethodCallingNumbers += 1
         sentURL = url
-
+        for i in 0..<successCompletions.count {
+            success(successCompletions[i] as! T)
+        }
+        for i in 0..<failuresCompletions.count {
+            failure(failuresCompletions[i])
+        }
     }
 }
+
 

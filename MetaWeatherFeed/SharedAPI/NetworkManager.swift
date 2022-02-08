@@ -33,19 +33,20 @@ class NetworkManager {
             
             switch resultValue {
             case .failure(let error):
-                failure(RequestResponseError(error: error))
+                failure(ResponseError(error: error))
                 break
             case .success((let data, let response)):
-                if (((response as? HTTPURLResponse)?.statusCode ?? -1) >  299) {
-                    failure(RequestResponseError.noDataFound)
+                
+                if (response.statusCode >  299) {
+                    failure(ResponseError.noDataFound)
                     return
                 }
                 debugPrint("response is \(response)")
                 let decodedValue: T? = self.decode(responseData: data)
-                if let decodedValue = decodedValue as? T {
+                if let decodedValue = decodedValue {
                     success(decodedValue)
                 }else {
-                    failure(RequestResponseError.responseMapFailure)
+                    failure(ResponseError.responseMapFailure)
                 }
                 break
             }
@@ -76,7 +77,7 @@ class NetworkManager {
         case urlInputError
     }
     
-    enum RequestResponseError: NetworkError {
+    enum ResponseError: NetworkError {
         func errorDescription() -> String {
             switch self {
             case .noDataFound:

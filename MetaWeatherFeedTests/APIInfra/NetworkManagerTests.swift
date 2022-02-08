@@ -75,13 +75,14 @@ class NetworkManagerTests: XCTestCase {
     
     //MARK: Helpers
     
-    func makeSUT() -> (NetworkManager, URLSessionSpy) {
+    func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (NetworkManager, URLSessionSpy) {
         let urlSession = URLSessionSpy()
-        let networkManager = NetworkManager(httpClient: urlSession)
-        return (networkManager, urlSession)
+        let sut = NetworkManager(httpClient: urlSession)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        return (sut, urlSession)
     }
     
-    func expect(sut:NetworkManager, to expectation: TestExpectation) {
+    func expect(sut:NetworkManager, to expectation: TestExpectation, file: StaticString = #filePath, line: UInt = #line) {
         sut.get(url: anyStringUrl, httpMethod: .get, parameters: nil) { (decodable:DecodableTest) in
             XCTAssert(expectation == .success)
         } failure: { error in

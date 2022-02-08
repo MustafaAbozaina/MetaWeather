@@ -25,6 +25,7 @@
 		957B071027B019E60026D1EF /* RemoteWeatherLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B06FB27ADAAD10026D1EF /* RemoteWeatherLoaderTests.swift */; };
 		957B071227B1745E0026D1EF /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B071127B1745E0026D1EF /* NetworkManagerTests.swift */; };
 		957B071527B1CE7F0026D1EF /* XCTestCase+Expectations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B071427B1CE7F0026D1EF /* XCTestCase+Expectations.swift */; };
+		957B071827B277800026D1EF /* String+substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B071727B2777F0026D1EF /* String+substring.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		957B070C27AF13A50026D1EF /* ArchDiagram2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ArchDiagram2.png; sourceTree = "<group>"; };
 		957B071127B1745E0026D1EF /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		957B071427B1CE7F0026D1EF /* XCTestCase+Expectations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Expectations.swift"; sourceTree = "<group>"; };
+		957B071727B2777F0026D1EF /* String+substring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+substring.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 		957B06CD27A9DA430026D1EF /* MetaWeatherFeed */ = {
 			isa = PBXGroup;
 			children = (
+				957B071627B277630026D1EF /* Extensions */,
 				957B070927AF0E4C0026D1EF /* Resources */,
 				957B070627AF0D0F0026D1EF /* SharedDecodableModels */,
 				957B06EE27ABD3810026D1EF /* SharedAPI */,
@@ -218,6 +221,14 @@
 			children = (
 				957B06F327ABD4390026D1EF /* XCTestCase+MemoryLeakTracking.swift */,
 				957B071427B1CE7F0026D1EF /* XCTestCase+Expectations.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		957B071627B277630026D1EF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				957B071727B2777F0026D1EF /* String+substring.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -364,6 +375,7 @@
 			files = (
 				957B070527AF0CF50026D1EF /* NetworkManager.swift in Sources */,
 				957B06F027ABD3BD0026D1EF /* HTTPClient.swift in Sources */,
+				957B071827B277800026D1EF /* String+substring.swift in Sources */,
 				957B06D027A9DA430026D1EF /* MetaWeatherFeed.docc in Sources */,
 				957B070827AF0D380026D1EF /* ConsolidatedWeatherRoot.swift in Sources */,
 				957B06F227ABD3F50026D1EF /* URLSessionHTTPClient.swift in Sources */,
