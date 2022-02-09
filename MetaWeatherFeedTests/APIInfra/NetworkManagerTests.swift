@@ -136,34 +136,3 @@ private func encodeJSON(value: [String:Any]) ->Data {
     return jsonData
 }
 
-
-
-extension Dictionary {
-    func toData() -> Data?{
-        guard let jsonData = try? JSONSerialization.data(
-            withJSONObject: self,
-            options: .prettyPrinted
-        ) else {
-            return nil
-        }
-        return jsonData
-    }
-}
-
-extension String {
-    func getDataContentsFromPath() -> Data? {
-            guard  let data = try? Data(contentsOf: URL(fileURLWithPath: self)) else {
-                return nil
-            }
-        return data
-    }
-    
-    func getContentFromPath() -> Any?{
-        guard let contents = try? String(contentsOf: URL(fileURLWithPath: self)) else {
-            return nil
-        }
-        return contents
-    }
-}
-
-
