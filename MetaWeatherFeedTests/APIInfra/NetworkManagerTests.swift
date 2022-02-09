@@ -54,17 +54,18 @@ class NetworkManagerTests: XCTestCase {
     
     func test_decodeJson_shouldDecodeDataSuccessfully(){
         let (sut, _) = makeSUT()
-        guard let jsonData = try?  JSONSerialization.data(
-            withJSONObject: weatherJsonTestData,
-            options: .prettyPrinted
-        ) else {
-            XCTFail()
-            return
+        let bundle = Bundle(for: type(of: self))
+
+        
+        guard let filepath = bundle.path(forResource: "WeatherRoot", ofType: "json"),
+              let data = filepath.getDataContentsFromPath() else {
+                return
         }
-        let weatherRoot: ConsolidatedWeatherRoot? = sut.decode(responseData: jsonData)
+
+        let weatherRoot: ConsolidatedWeatherRoot? = sut.decode(responseData: data)
         XCTAssertNotNil(weatherRoot?.consolidatedWeather)
-        XCTAssertEqual(weatherRoot?.consolidatedWeather?[0].id, 6306969095766016)
-        XCTAssertEqual(weatherRoot?.consolidatedWeather?[0].minTemp, -1.06)
+        XCTAssertEqual(weatherRoot?.consolidatedWeather?[0].id, 4928525111918592)
+        XCTAssertEqual(weatherRoot?.consolidatedWeather?[0].minTemp,-8.295)
     }
     
     func test_getFromUrl_shouldFailInCaseIfError() {
@@ -136,25 +137,33 @@ private func encodeJSON(value: [String:Any]) ->Data {
 }
 
 
-// MARK: testing data
 
-private var weatherJsonTestData: [String: Any] =
-["consolidated_weather": [
-    [
-        "id": 6306969095766016,
-        "weather_state_name": "Heavy Cloud",
-        "weather_state_abbr": "hc",
-        "wind_direction_compass": "W",
-        "created": "2022-01-31T14:00:55.247050Z",
-        "applicable_date": "2022-01-31",
-        "min_temp": -1.06,
-        "max_temp": 4.7,
-        "the_temp": 2.685,
-        "wind_speed": 6.69000353256449,
-        "wind_direction": 272.3332279826744,
-        "air_pressure": 1014.5,
-        "humidity": 60,
-        "visibility": 14.435384852461624,
-        "predictability": 71
-    ]]]
+extension Dictionary {
+    func toData() -> Data?{
+        guard let jsonData = try? JSONSerialization.data(
+            withJSONObject: self,
+            options: .prettyPrinted
+        ) else {
+            return nil
+        }
+        return jsonData
+    }
+}
+
+extension String {
+    func getDataContentsFromPath() -> Data? {
+            guard  let data = try? Data(contentsOf: URL(fileURLWithPath: self)) else {
+                return nil
+            }
+        return data
+    }
+    
+    func getContentFromPath() -> Any?{
+        guard let contents = try? String(contentsOf: URL(fileURLWithPath: self)) else {
+            return nil
+        }
+        return contents
+    }
+}
+
 
