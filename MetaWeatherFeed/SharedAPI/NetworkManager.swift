@@ -27,9 +27,7 @@ class NetworkManager {
             failure(RequesetDataError.urlInputError)
             return
         }
-        
         self.httpClient.get(from: requestURL) { (resultValue:HTTPClient.Result) in
-            
             switch resultValue {
             case .failure(let error):
                 failure(ResponseError(error: error))
@@ -65,48 +63,5 @@ class NetworkManager {
         case get = "GET"
         case post = "POST"
     }
-    
-    enum RequesetDataError:  NetworkError {
-        func errorDescription() -> String {
-            switch self {
-            case .urlInputError:
-                return "URL is missing"
-            }
-        }
-        case urlInputError
-    }
-    
-    enum ResponseError: NetworkError {
-        func errorDescription() -> String {
-            switch self {
-            case .noDataFound:
-                return "No Data Found"
-            case .responseMapFailure:
-                return "Json Response Mapping Failed"
-            }
-        }
-        
-        init(error: Error) {
-            debugPrint(error)
-            self = .noDataFound
-        }
-        
-        init(statusCode: Int) {
-            switch statusCode {
-            case 404:
-                self = .noDataFound
-            break
-            default:
-                self = .noDataFound
-                break
-            }
-        }
-        
-        case noDataFound
-        case responseMapFailure
-    }
-}
 
-protocol NetworkError: Error {
-    func errorDescription() -> String
 }

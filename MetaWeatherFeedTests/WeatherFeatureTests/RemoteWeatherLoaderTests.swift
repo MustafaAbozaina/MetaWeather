@@ -71,7 +71,7 @@ class RemoteWeatherLoaderTests: XCTestCase {
     
     func test_getWeatherFailed_shouldFireFailureClosure() {
         let (sut, networkManager) = makeSUT()
-        networkManager.failuresCompletions.append(NetworkManagerSpy<Any>.ResponseError.noDataFound)
+        networkManager.failuresCompletions.append(ResponseError.noDataFound)
         sut.getWeatherInfo(locationId: locationId, success:{ (weatherRoot:ConsolidatedWeatherRoot) in
             XCTFail()
         },failure: { error in

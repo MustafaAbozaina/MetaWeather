@@ -31,6 +31,7 @@
 		957B071F27B2C1AA0026D1EF /* WeatherRoot.json in Resources */ = {isa = PBXBuildFile; fileRef = 957B071E27B2C1AA0026D1EF /* WeatherRoot.json */; };
 		957B072327B3EDDE0026D1EF /* Dictionary+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B072227B3EDDD0026D1EF /* Dictionary+Data.swift */; };
 		957B072527B3EE320026D1EF /* String+FilePathContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B072427B3EE320026D1EF /* String+FilePathContents.swift */; };
+		957B072827B4FE2B0026D1EF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B072727B4FE2B0026D1EF /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		957B071E27B2C1AA0026D1EF /* WeatherRoot.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = WeatherRoot.json; sourceTree = "<group>"; };
 		957B072227B3EDDD0026D1EF /* Dictionary+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Data.swift"; sourceTree = "<group>"; };
 		957B072427B3EE320026D1EF /* String+FilePathContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+FilePathContents.swift"; sourceTree = "<group>"; };
+		957B072727B4FE2B0026D1EF /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 				957B06EF27ABD3BD0026D1EF /* HTTPClient.swift */,
 				957B06F127ABD3F50026D1EF /* URLSessionHTTPClient.swift */,
 				957B070427AF0CF50026D1EF /* NetworkManager.swift */,
+				957B072727B4FE2B0026D1EF /* NetworkError.swift */,
 			);
 			path = SharedAPI;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				957B071827B277800026D1EF /* String+substring.swift in Sources */,
 				957B06D027A9DA430026D1EF /* MetaWeatherFeed.docc in Sources */,
 				957B072527B3EE320026D1EF /* String+FilePathContents.swift in Sources */,
+				957B072827B4FE2B0026D1EF /* NetworkError.swift in Sources */,
 				957B070827AF0D380026D1EF /* ConsolidatedWeatherRoot.swift in Sources */,
 				957B06F227ABD3F50026D1EF /* URLSessionHTTPClient.swift in Sources */,
 			);
