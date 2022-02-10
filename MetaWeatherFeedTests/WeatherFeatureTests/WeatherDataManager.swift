@@ -48,7 +48,7 @@ class WeatherDataManagerTests: XCTestCase {
         let remoteWeatherLoader = RemoteWeatherLoaderSpy()
         let localWeatherLoader = LocaleWeatherLoaderSpy()
         let sut = WeatherDataManager(remoteLoader: remoteWeatherLoader, localeLoader:localWeatherLoader )
-        
+        sut.loadWeatherInfo(locationId: 839722)
     }
 }
 
