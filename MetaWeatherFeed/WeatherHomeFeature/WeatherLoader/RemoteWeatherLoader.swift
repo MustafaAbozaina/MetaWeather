@@ -8,9 +8,6 @@
 import Foundation
 
 
-protocol WeatherLoader {
-    func getWeatherInfo(locationId: Int, success:@escaping (ConsolidatedWeatherRoot)->(), failure: @escaping (Error)->())
-}
 
 class RemoteWeatherLoader: WeatherLoader {
     var networkManager: NetworkManager!
@@ -26,4 +23,5 @@ class RemoteWeatherLoader: WeatherLoader {
             failure(networkError)
         })
     }
+
 }
