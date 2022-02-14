@@ -1,2 +1,0 @@
-# MetaWeather
-a weather app 
