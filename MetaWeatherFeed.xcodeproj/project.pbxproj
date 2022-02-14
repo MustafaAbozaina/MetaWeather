@@ -34,7 +34,7 @@
 		957B072827B4FE2B0026D1EF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B072727B4FE2B0026D1EF /* NetworkError.swift */; };
 		957B072B27B500810026D1EF /* RemoteWeatherLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B072A27B500810026D1EF /* RemoteWeatherLoader.swift */; };
 		957B072E27B501580026D1EF /* WeatherLoader+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B072D27B501580026D1EF /* WeatherLoader+Protocol.swift */; };
-		957B074627BA85950026D1EF /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 957B074527BA85940026D1EF /* Readme.md */; };
+		957B074A27BA88000026D1EF /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 957B074927BA88000026D1EF /* Readme.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,7 +83,7 @@
 		957B072727B4FE2B0026D1EF /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		957B072A27B500810026D1EF /* RemoteWeatherLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteWeatherLoader.swift; sourceTree = "<group>"; };
 		957B072D27B501580026D1EF /* WeatherLoader+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherLoader+Protocol.swift"; sourceTree = "<group>"; };
-		957B074527BA85940026D1EF /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
+		957B074927BA88000026D1EF /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +136,7 @@
 		957B06CD27A9DA430026D1EF /* MetaWeatherFeed */ = {
 			isa = PBXGroup;
 			children = (
+				957B074927BA88000026D1EF /* Readme.md */,
 				957B072927B5004B0026D1EF /* WeatherHomeFeature */,
 				957B071627B277630026D1EF /* Extensions */,
 				957B070927AF0E4C0026D1EF /* Resources */,
@@ -143,7 +144,6 @@
 				957B06EE27ABD3810026D1EF /* SharedAPI */,
 				957B06CE27A9DA430026D1EF /* MetaWeatherFeed.h */,
 				957B06CF27A9DA430026D1EF /* MetaWeatherFeed.docc */,
-				957B074527BA85940026D1EF /* Readme.md */,
 			);
 			path = MetaWeatherFeed;
 			sourceTree = "<group>";
@@ -408,7 +408,7 @@
 			files = (
 				957B070D27AF13A50026D1EF /* ArchDiagram2.png in Resources */,
 				957B070B27AF0E670026D1EF /* InitialArchDiagram.png in Resources */,
-				957B074627BA85950026D1EF /* Readme.md in Resources */,
+				957B074A27BA88000026D1EF /* Readme.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
